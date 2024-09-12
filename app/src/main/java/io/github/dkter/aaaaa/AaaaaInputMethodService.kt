@@ -57,16 +57,16 @@ class AaaaaInputMethodService : InputMethodService(), AaaaaKeyboardView.AaaaaKey
         isUppercase = false
     }
 
-    private fun inputChar(ch: Char) {
+    private fun inputString(string: CharSequence) {
         val ic: InputConnection? = getCurrentInputConnection()
         if (ic == null) {
             return
         }
-        ic.commitText(ch.toString(), 1)
+        ic.commitText(string, 1)
     }
 
     override fun onA() {
-        inputChar(if (isUppercase) 'A' else 'a')
+        inputString(getString(if (isUppercase) R.string.A else R.string.a))
     }
 
     override fun onLongA() {
@@ -95,7 +95,7 @@ class AaaaaInputMethodService : InputMethodService(), AaaaaKeyboardView.AaaaaKey
     }
 
     override fun onSpace() {
-        inputChar(' ')
+        inputString( " ")
     }
 
     override fun onReturn() {

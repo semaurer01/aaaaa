@@ -8,7 +8,7 @@
 
 <resources>
     <string name="app_name">aaaaa</string>
-    <string name="a">a</string>
+    <string name="A">A</string>
     <string name="space">space</string>
     <string name="backspace">backspace</string>
     <string name="enter">return</string>
@@ -34,4 +34,5 @@
     <string name="hapticFeedbackKey">io.github.dkter.aaaaa.enableHapticFeedback</string>
     <string name="themeSettingKey">io.github.dkter.aaaaa.themeSetting</string>
     <string name="minimalistModeKey">io.github.dkter.aaaaa.minimalistMode</string>
+    <string name="a">a</string>
 </resources>

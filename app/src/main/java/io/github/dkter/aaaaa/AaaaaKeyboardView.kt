@@ -11,6 +11,7 @@ package io.github.dkter.aaaaa
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.provider.Settings.Global.getString
 import android.view.*
 import android.widget.Button
 import android.widget.ImageButton
@@ -18,7 +19,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.use
+import androidx.core.view.get
 import androidx.preference.PreferenceManager
+import io.github.dkter.aaaaa.R.string
 
 @SuppressLint("ClickableViewAccessibility")
 class AaaaaKeyboardView(
@@ -58,7 +61,7 @@ class AaaaaKeyboardView(
         // reason. AppThemeLight and AppThemeDark are functionally identical
         // to the light and dark modes of AppTheme.
         // https://stackoverflow.com/a/67340930/5253369
-        val themeSetting = getStringPref(R.string.themeSettingKey)
+        val themeSetting = getStringPref(string.themeSettingKey)
         val themeId = if (themeSetting == "MODE_NIGHT_NO") {
             R.style.AppThemeLight
         } else if (themeSetting == "MODE_NIGHT_YES") {
@@ -93,7 +96,7 @@ class AaaaaKeyboardView(
         this.keyboardListener = keyboardListener
 
         // Hide extra buttons if in minimalist mide
-        val minimalistModeSetting = getBooleanPref(R.string.minimalistModeKey)
+        val minimalistModeSetting = getBooleanPref(string.minimalistModeKey)
         if (minimalistModeSetting) {
             this.btnSpace.visibility = View.GONE
             this.btnUppercase.visibility = View.GONE
@@ -114,7 +117,7 @@ class AaaaaKeyboardView(
 
     override fun onClick(v: View) {
         val id = v.getId()
-        if (this.getBooleanPref(R.string.hapticFeedbackKey))
+        if (this.getBooleanPref(string.hapticFeedbackKey))
             v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
 
         when (id) {
@@ -161,13 +164,13 @@ class AaaaaKeyboardView(
     }
 
     private fun onUppercase() {
-        btnA.text = "A"
+        btnA.text = context.getString(R.string.A)
         val colorPrimary = ContextCompat.getColor(context, R.color.colorPrimary)
         btnUppercase.drawable.setTint(colorPrimary)
     }
 
     private fun onLowercase() {
-        btnA.text = "a"
+        btnA.text = context.getString(R.string.a)
         val colorControlNormal = themeWrapper
                 .theme
                 .obtainStyledAttributes(intArrayOf(android.R.attr.colorControlNormal))
